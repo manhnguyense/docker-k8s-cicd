@@ -1,24 +1,19 @@
-import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-export default class Navbar extends Component {
-  static defaultProps = {
-    title: "Test",
-  };
+import React from "react";
 
-  render() {
-    return (
-      <div className="navbar bg-primary">
-        <h1>{this.props.title}</h1>
-        <ul>
-          <li>
-            <Link to="/"> Home</Link>
-          </li>
-          <li>
-            <Link to="/about"> About</Link>
-          </li>
-        </ul>
-      </div>
-    );
-  }
+export default function Navbar(props) {
+  return (
+    <div className="navbar bg-primary">
+      <h1>{props.title}</h1>
+      <ul>
+        <li>
+          <Link to="/"> Home</Link>
+        </li>
+        <li>
+          <Link to="/about"> About</Link>
+        </li>
+      </ul>
+    </div>
+  );
 }
