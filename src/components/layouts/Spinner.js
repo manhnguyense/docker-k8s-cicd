@@ -1,7 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class Spinner extends Component {
-  render() {
-    return <div>loading .... ...</div>;
-  }
+export default function Spinner() {
+  return <div>Loading ..... ....</div>;
 }
