@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import UserItem from "./UserItem";
 import Spinner from "../layouts/Spinner";
+import GithubContext from "../../context/github/GithubContext";
 
-export default function User({ loading, users }) {
+export default function User() {
+  const githubContext = useContext(GithubContext);
+  const { loading, users } = githubContext;
   if (loading) {
     return (
       <div>
