@@ -1,11 +1,15 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useContext, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import GithubContext from "../../context/github/GithubContext";
 
-export default function UserDetail(props) {
+export default function UserDetail() {
   const { login } = useParams();
+  const githubContext = useContext(GithubContext);
+  const { getUser, user } = githubContext;
   useEffect(() => {
-    props.getUser(login);
+    getUser(login);
   }, []);
+
   const {
     avatar_url,
     url,
@@ -18,7 +22,7 @@ export default function UserDetail(props) {
     public_repos,
     followers,
     following,
-  } = props?.user;
+  } = user;
   return (
     <Fragment>
       <ul>

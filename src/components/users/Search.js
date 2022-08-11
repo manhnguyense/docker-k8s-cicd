@@ -1,24 +1,19 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useContext, useState } from "react";
+import GithubContext from "../../context/github/GithubContext";
 
-export default function Search({
-  searchUsers,
-  showClear,
-  clearUsers,
-  setAlert,
-}) {
+export default function Search() {
+  const githubContext = useContext(GithubContext);
   const [text, setText] = useState("");
   const onChange = (e) => {
-    console.log(e.target.value);
     setText(e.target.value);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
     if (text === "") {
-      setAlert("Value not existed!", "info");
+      githubContext.setAlerts("Value not existed!", "info");
     } else {
-      searchUsers(text);
+      githubContext.searchUsers(text);
       setText("");
     }
   };
@@ -39,15 +34,14 @@ export default function Search({
           className="btn btn-dark btn-block"
         ></input>
       </form>
-      {showClear && (
-        <button className="btn btn-light btn-block" onClick={clearUsers}>
+      {githubContext.users.length > 0 && (
+        <button
+          className="btn btn-light btn-block"
+          onClick={githubContext.clearUsers}
+        >
           Clear
         </button>
       )}
     </div>
   );
 }
-
-Search.propTypes = {
-  searchUsers: PropTypes.func.isRequired,
-};
