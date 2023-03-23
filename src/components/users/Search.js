@@ -24,7 +24,7 @@ export default function Search() {
         <input
           type="text"
           name="text"
-          placeholder="Search "
+          placeholder="Search"
           value={text}
           onChange={onChange}
         ></input>
